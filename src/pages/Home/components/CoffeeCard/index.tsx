@@ -77,8 +77,8 @@ export function CoffeeCard({ coffee }: CoffeeProps) {
             quantity={quantity}
           />
           <button
-            className="w-[2.375rem] h-[2.375rem] border-0 flex items-center justify-center bg-brand-purple-dark text-base-card rounded-md ml-[0.3rem] duration-[0.4s] hover:bg-brand-purple"
             onClick={handleAddToCart}
+            className="w-[2.375rem] h-[2.375rem] border-0 flex items-center justify-center bg-brand-purple-dark text-base-card rounded-md ml-[0.3rem] duration-[0.4s] hover:bg-brand-purple"
           >
             <ShoppingCart size={22} weight="fill" />
           </button>
