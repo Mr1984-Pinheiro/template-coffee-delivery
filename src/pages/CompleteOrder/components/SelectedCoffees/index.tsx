@@ -1,4 +1,3 @@
-import { Button } from "../../../../components/Button";
 import { TitleText } from "../../../../components/Typography";
 import { useCart } from "../../../../hooks/useCart";
 import { CoffeeKartCard } from "../CoffeeKartCard";
@@ -19,8 +18,6 @@ export function SelectedCoffees() {
         ))}
 
         <ConfirmationSection />
-
-        <Button text="Confirmar pedido" disabled />
       </div>
     </div>
   );
