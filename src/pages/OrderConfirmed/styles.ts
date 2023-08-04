@@ -12,7 +12,6 @@ export const OrderConfirmedContainer = styled.div`
 
   > section {
     display: flex;
-    gap: 1rem ;    
     justify-content: space-between;
   }
 

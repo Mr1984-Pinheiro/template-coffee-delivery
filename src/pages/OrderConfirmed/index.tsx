@@ -38,8 +38,8 @@ export function OrderConfirmed() {
         </RegularText>
       </div>
 
-      <section className="flex-col md:flex-row">
-        <OrderDetailsContainer>
+      <section className="flex-col md:flex-row gap-4 md:gap-12">
+        <OrderDetailsContainer className="md:w-3/6">
           <InfoWithIcon
             icon={<MapPin weight="fill" />}
             iconBg={colors["brand-purple"]}
@@ -80,7 +80,7 @@ export function OrderConfirmed() {
           />
         </OrderDetailsContainer>
 
-        <img src={confirmedOrderIllustration} />
+        <img className="md:w-3/6" src={confirmedOrderIllustration} />
       </section>
     </OrderConfirmedContainer>
   );
