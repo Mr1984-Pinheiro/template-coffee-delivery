@@ -4,10 +4,30 @@ import confirmedOrderIllustration from "../../assets/confirmed-order.svg";
 import { InfoWithIcon } from "../../components/InfoWithIcon";
 import { Clock, CurrencyDollar, MapPin } from "phosphor-react";
 import { defaultTheme } from "../../styles/themes/default";
+import { OrderData } from "../CompleteOrder";
+import { useLocation, useNavigate } from "react-router-dom";
+import { paymentMethods } from "../CompleteOrder/components/CompleteOrderForm/PaymentMethodOptions";
+import { useEffect } from "react";
 defaultTheme;
+
+interface LocationType {
+  state: OrderData;
+}
 
 export function OrderConfirmed() {
   const { colors } = defaultTheme;
+
+  const { state } = useLocation() as unknown as LocationType;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!state) {
+      navigate("/");
+    }
+  }, []);
+
+  if (!state) return <></>;
 
   return (
     <OrderConfirmedContainer className="container mx-auto max-w-md w-full">
@@ -25,8 +45,12 @@ export function OrderConfirmed() {
             iconBg={colors["brand-purple"]}
             text={
               <RegularText>
-                Entrega em <strong>alofjudf udhfduyfd didufgduf dufhdu</strong>,
+                Entrega em{" "}
+                <strong>
+                  {state.street}, {state.number}
+                </strong>
                 <br />
+                {state.complement} - {state.city}, {state.uf}
               </RegularText>
             }
           />
@@ -50,10 +74,7 @@ export function OrderConfirmed() {
               <RegularText>
                 Pagamento na entrega
                 <br />
-                <strong>
-                  fdihu ihvdudsf idzddifuafkjbav vhiuvndv viuh id v dviv divdvv
-                  d
-                </strong>
+                <strong>{paymentMethods[state.paymentMethod].label}</strong>
               </RegularText>
             }
           />

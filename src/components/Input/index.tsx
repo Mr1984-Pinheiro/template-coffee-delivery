@@ -1,17 +1,24 @@
-import { InputHTMLAttributes } from "react"
+import { InputHTMLAttributes, forwardRef } from "react";
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+  error?: string;
+};
 
-
-type InputProps = InputHTMLAttributes<HTMLInputElement>;
-
-export function Input({ ...props }:InputProps){
-    return(        
-        <input className="h-[2.625rem] rounded-[4px] border border-base-button bg-base-input duration-[0.4s] 
-        focus:border-brand-yellow-dark text-base-text text-xs py-0 px-3 placeholder:text-base-label" {...props}
-        >
-            
-        </input>     
-        
-        
-        
-    )
-}
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ error, ...props }, ref) => {
+    return (
+      <>
+        <input
+          className="h-[2.625rem] rounded-[4px] border border-base-button bg-base-input duration-[0.4s] 
+        focus:border-brand-yellow-dark text-base-text text-xs py-0 px-3 placeholder:text-base-label"
+          {...props}
+          ref={ref}
+        ></input>
+        {error && (
+          <p className={`col-span-8 text-red-400 text-[10px] -mt-2 `}>
+            {error}
+          </p>
+        )}
+      </>
+    );
+  }
+);
